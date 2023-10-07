@@ -25,6 +25,7 @@ const options = {
 	hostname: 'directsend.co.kr',
 	path: '/index.php/api_v2/kakao_notice',
 	method: 'POST',
+	port: 5000,
 	headers: {
 		'Content-Type': 'application/json;charset=utf-8',
 		'Accept': 'application/json'
