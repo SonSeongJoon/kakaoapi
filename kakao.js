@@ -9,13 +9,13 @@ const PORT = 5000;
 
 const USERNAME = process.env.DIRECTSEND_USERNAME;
 const API_KEY = process.env.DIRECTSEND_API_KEY;
-console.log(API_KEY)
 const KAKAO_PLUS_ID = "@seoulir07";
 const USER_TEMPLATE_NO = "20";
 
 app.use(bodyParser.json());
 
-app.get("/send_kakao", async (req, res) => {
+app.get("/send_kakao/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async (req, res) => {
+	const {name, phoneNum, file, link} = req.params;
 	try {
 		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
 
@@ -26,12 +26,11 @@ app.get("/send_kakao", async (req, res) => {
 			kakao_plus_id   : KAKAO_PLUS_ID,
 			user_template_no: USER_TEMPLATE_NO,
 			receiver        : [
-				{"name"    : "손성준",
-					"mobile": "01028184783",
-					"note1" : "다이렉트센드 1",
-					"note2" : "다이렉트센드 2",
-					"note3" : "다이렉트센드 3",
-					"note4" : "다이렉트센드 4"
+				{"name"    : name,
+					"mobile": phoneNum,
+					"note1" : name + "의",
+					"note2" : file + "결제 요청이 전자결재",
+					"note4" : "바로 결재하기 : " + link,
 				},
 			]
 		}, {
