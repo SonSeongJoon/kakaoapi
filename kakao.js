@@ -29,8 +29,8 @@ app.get("/send_kakao/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async
 				{"name"    : name,
 					"mobile": phoneNum,
 					"note1" : name + "의",
-					"note2" : file + "결제 요청이 전자결재",
-					"note4" : "바로 결재하기 : " + link,
+					"note2" : file + "가(이)",
+					"note4" : "\n바로 결재하기 : " + link,
 				},
 			]
 		}, {
