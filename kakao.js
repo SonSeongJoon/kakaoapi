@@ -29,8 +29,8 @@ app.get("/send_kakao/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async
 				{"name"    : name,
 					"mobile": phoneNum,
 					"note1" : name + "의",
-					"note2" : file + "가(이)",
-					"note4" : "\n바로 결재하기 : " + link,
+					"note2" : file + "가 전자결재",
+					"note4" : "바로가기 : " + link,
 				},
 			]
 		}, {
@@ -41,7 +41,6 @@ app.get("/send_kakao/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async
 			}
 		});
 
-		// 성공/실패 여부를 클라이언트에 전달합니다.
 		res.json(response.data);
 	} catch (error) {
 		console.error("Error:", error);
