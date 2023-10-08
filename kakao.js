@@ -1,12 +1,15 @@
 const express = require("express");
 const axios = require("axios");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 
+dotenv.config();
 const app = express();
 const PORT = 5000;
 
 const USERNAME = process.env.DIRECTSEND_USERNAME;
 const API_KEY = process.env.DIRECTSEND_API_KEY;
+console.log(API_KEY)
 const KAKAO_PLUS_ID = "@seoulir07";
 const USER_TEMPLATE_NO = "20";
 
