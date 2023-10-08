@@ -30,7 +30,7 @@ app.get("/send_kakao/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async
 					"mobile": phoneNum,
 					"note1" : name + "의",
 					"note2" : file + "가 전자결재",
-					"note4" : "바로가기 : " + link,
+					"note4" : link,
 				},
 			]
 		}, {
