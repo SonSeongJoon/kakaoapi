@@ -48,6 +48,15 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 	}
 });
 
+app.get("/send_kakao_agree", async (req, res) => {
+	try {
+		const response = await axios.get("https://port-0-kakaoapi-euegqv2blnfy3ekc.sel5.cloudtype.app/send_kakao_agree");
+		res.json(response.data);
+	} catch (error) {
+		console.error("Error:", error);
+		res.status(500).send("Internal Server Error");
+	}
+});
 
 app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);
