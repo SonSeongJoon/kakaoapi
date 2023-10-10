@@ -14,7 +14,7 @@ const USER_TEMPLATE_NO = "20";
 
 app.use(bodyParser.json());
 
-app.get("/send_kakao/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async (req, res) => {
+app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async (req, res) => {
 	const {name, phoneNum, file, link} = req.params;
 	try {
 		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
