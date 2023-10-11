@@ -10,7 +10,6 @@ const PORT = 5000;
 const USERNAME = process.env.DIRECTSEND_USERNAME;
 const API_KEY = process.env.DIRECTSEND_API_KEY;
 const KAKAO_PLUS_ID = "@seoulir07";
-const USER_TEMPLATE_NO = "20";
 
 app.use(bodyParser.json());
 
@@ -24,7 +23,7 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
-			user_template_no: USER_TEMPLATE_NO,
+			user_template_no: 20,
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
@@ -48,9 +47,32 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 	}
 });
 
-app.get("/send_kakao_agree", async (req, res) => {
+app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:state", async (req, res) => {
+	const {name, phoneNum, title, state} = req.params;
 	try {
-		const response = await axios.get("https://port-0-kakaoapi-euegqv2blnfy3ekc.sel5.cloudtype.app/send_kakao_agree");
+		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
+
+		const response = await axios.post(apiUrl, {
+			username        : USERNAME,
+			key             : API_KEY,
+			type            : "node",
+			kakao_plus_id   : KAKAO_PLUS_ID,
+			user_template_no: USER_TEMPLATE_NO,
+			receiver        : [
+				{"name"    : name,
+					"mobile": phoneNum,
+					"note1" : title,
+					"note2" : state
+				},
+			]
+		}, {
+			headers: {
+				"Content-Type" : "application/json;charset=utf-8",
+				"Accept"       : "application/json",
+				"Cache-Control": "no-cache"
+			}
+		});
+
 		res.json(response.data);
 	} catch (error) {
 		console.error("Error:", error);
