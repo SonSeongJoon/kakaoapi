@@ -51,7 +51,6 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 	const {name, phoneNum, title, state} = req.params;
 	try {
 		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
-
 		const response = await axios.post(apiUrl, {
 			username        : USERNAME,
 			key             : API_KEY,
@@ -62,7 +61,8 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 				{"name"    : name,
 					"mobile": phoneNum,
 					"note1" : title,
-					"note2" : state
+					"note2" : state,
+					"note3" : "https://seouliredsm.netlify.app/total"
 				},
 			]
 		}, {
