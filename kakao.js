@@ -57,7 +57,7 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
-			user_template_no: USER_TEMPLATE_NO,
+			user_template_no: 47,
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
