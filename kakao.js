@@ -23,7 +23,7 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
-			user_template_no: 20,
+			user_template_no: 44,
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
@@ -60,7 +60,7 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
-					"note1" : title,
+					"note1" : "[" + title + "]",
 					"note2" : state,
 					"note3" : "https://seouliredsm.netlify.app/total"
 				},
