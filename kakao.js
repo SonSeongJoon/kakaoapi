@@ -14,7 +14,7 @@ const KAKAO_PLUS_ID = "@seoulir07";
 app.use(bodyParser.json());
 
 app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async (req, res) => {
-	const {name, phoneNum, file, title, link} = req.params;
+	const {name, phoneNum, file, link} = req.params;
 	try {
 		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
 
@@ -46,8 +46,8 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 	}
 });
 
-app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:state", async (req, res) => {
-	const {name, phoneNum, title, state} = req.params;
+app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:state/link/:link", async (req, res) => {
+	const {name, phoneNum, title, state, link} = req.params;
 	try {
 		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
 		const response = await axios.post(apiUrl, {
@@ -55,13 +55,13 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
-			user_template_no: 47,
+			user_template_no: 59,
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
 					"note1" : "[" + title + "]",
 					"note2" : state,
-					"note3" : "https://seouliredsm.netlify.app/total"
+					"note3" : "https://seouliredsm.netlify.app/total/detail/"+link,
 				},
 			]
 		}, {
