@@ -29,7 +29,7 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 					"mobile": phoneNum,
 					"note1" : name + "의",
 					"note2" : file + "가 전자결재",
-					"note4" : link,
+					"note4" : "아래 수신함 이동 버튼 클릭",
 				},
 			]
 		}, {
