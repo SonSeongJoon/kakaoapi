@@ -13,7 +13,7 @@ const KAKAO_PLUS_ID = "@seoulir07";
 
 app.use(bodyParser.json());
 
-app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link/title/:title", async (req, res) => {
+app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link", async (req, res) => {
 	const {name, phoneNum, file, title, link} = req.params;
 	try {
 		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
@@ -23,13 +23,12 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link/
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
-			user_template_no: 44,
+			user_template_no: 50,
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
 					"note1" : file,
-					"note3" : title,
-					"note4" : link,
+					"note2" : link,
 				},
 			]
 		}, {
