@@ -23,7 +23,7 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
-			user_template_no: 50,
+			user_template_no: 62,
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
@@ -55,7 +55,7 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
-			user_template_no: 59,
+			user_template_no: 68,
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
@@ -88,7 +88,7 @@ app.get("/send_kakao_modify/name/:name/writeName/:writeName/phoneNum/:phoneNum/f
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
-			user_template_no: 53,
+			user_template_no: 65,
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
