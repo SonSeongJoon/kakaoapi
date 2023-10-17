@@ -48,6 +48,11 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 
 app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:state/link/:link", async (req, res) => {
 	const {name, phoneNum, title, state, link} = req.params;
+
+	if (name === '승인자') {
+		return res.status(200).send('Name is 승인자. No message sent.');
+	}
+
 	try {
 		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
 		const response = await axios.post(apiUrl, {
@@ -90,6 +95,7 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 		res.status(500).send("Internal Server Error");
 	}
 });
+
 
 
 app.get("/send_kakao_modify/name/:name/writeName/:writeName/phoneNum/:phoneNum/file/:file/link/:link", async (req, res) => {
