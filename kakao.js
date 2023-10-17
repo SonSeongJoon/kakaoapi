@@ -63,6 +63,18 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 					"note2" : state,
 					"note3" : "https://seouliredsm.netlify.app/total/detail/"+link,
 				},
+				{"name"    : "권미경",
+					"mobile": "01064712427",
+					"note1" :  name+"님의" + "[" + title + "]",
+					"note2" : state,
+					"note3" : "https://seouliredsm.netlify.app/mst/detail/"+link,
+				},
+				// {"name"    : "마혜미",
+				// 	"mobile": "01099135537",
+				// 	"note1" :  name+"님의" + "[" + title + "]",
+				// 	"note2" : state,
+				// 	"note3" : "https://seouliredsm.netlify.app/mst/detail/"+link,
+				// },
 			]
 		}, {
 			headers: {
@@ -78,6 +90,7 @@ app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:sta
 		res.status(500).send("Internal Server Error");
 	}
 });
+
 
 app.get("/send_kakao_modify/name/:name/writeName/:writeName/phoneNum/:phoneNum/file/:file/link/:link", async (req, res) => {
 	const {name, phoneNum, file, link, writeName} = req.params;
