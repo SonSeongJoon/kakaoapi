@@ -49,38 +49,52 @@ app.get("/send_kakao_create/name/:name/phoneNum/:phoneNum/file/:file/link/:link"
 app.get("/send_kakao_agree/name/:name/phoneNum/:phoneNum/title/:title/state/:state/link/:link", async (req, res) => {
 	const {name, phoneNum, title, state, link} = req.params;
 
-	if (name === '승인자') {
-		return res.status(200).send('Name is 승인자. No message sent.');
-	}
-
 	try {
 		const apiUrl = "https://directsend.co.kr/index.php/api_v2/kakao_notice";
+
+		let receivers = [
+			{
+				"name"  : name,
+				"mobile": phoneNum,
+				"note1" : "[" + title + "]",
+				"note2" : state,
+				"note3" : "https://seouliredsm.netlify.app/total/detail/"+link,
+			},
+			{
+				"name"  : "권미경",
+				"mobile": "01064712427",
+				"note1" : name + "님의" + "[" + title + "]",
+				"note2" : state,
+				"note3" : "https://seouliredsm.netlify.app/mst/detail/"+link,
+			},
+			{
+				"name"  : "마혜미",
+				"mobile": "01099135537",
+				"note1" : name + "님의" + "[" + title + "]",
+				"note2" : state,
+				"note3" : "https://seouliredsm.netlify.app/mst/detail/"+link,
+			},
+		];
+
+		if (name === '승인자') {
+			receivers = [
+				{
+					"name"  : "손성준",
+					"mobile": "01028184783",
+					"note1" : name + "님의" + "[" + title + "]",
+					"note2" : state,
+					"note3" : "https://seouliredsm.netlify.app/mst/detail/" + link,
+				},
+			];
+		}
+
 		const response = await axios.post(apiUrl, {
 			username        : USERNAME,
 			key             : API_KEY,
 			type            : "node",
 			kakao_plus_id   : KAKAO_PLUS_ID,
 			user_template_no: 68,
-			receiver        : [
-				{"name"    : name,
-					"mobile": phoneNum,
-					"note1" : "[" + title + "]",
-					"note2" : state,
-					"note3" : "https://seouliredsm.netlify.app/total/detail/"+link,
-				},
-				{"name"    : "권미경",
-					"mobile": "01064712427",
-					"note1" :  name+"님의" + "[" + title + "]",
-					"note2" : state,
-					"note3" : "https://seouliredsm.netlify.app/mst/detail/"+link,
-				},
-				{"name"    : "마혜미",
-					"mobile": "01099135537",
-					"note1" :  name+"님의" + "[" + title + "]",
-					"note2" : state,
-					"note3" : "https://seouliredsm.netlify.app/mst/detail/"+link,
-				},
-			]
+			receiver        : receivers
 		}, {
 			headers: {
 				"Content-Type" : "application/json;charset=utf-8",
