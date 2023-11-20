@@ -125,7 +125,7 @@ app.get("/send_kakao_modify/name/:name/writeName/:writeName/phoneNum/:phoneNum/f
 			receiver        : [
 				{"name"    : name,
 					"mobile": phoneNum,
-					"note1" : ["재승인 바랍니다!"] + writeName,
+					"note1" : "["+"재승인 바랍니다! "+"]" + writeName,
 					"note2" : file,
 					"note3" : "https://seouliredsm.netlify.app/receive/detail/"+link,
 				},
